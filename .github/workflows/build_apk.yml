@@ -9,7 +9,7 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
 
     steps:
       - name: Checkout repository
@@ -44,7 +44,9 @@ jobs:
             libtinfo5 \
             cmake \
             zip \
-            unzip
+            unzip \
+            libgstreamer1.0-dev \
+            gstreamer1.0-plugins-base
 
       - name: Install Python dependencies & Buildozer
         run: |
