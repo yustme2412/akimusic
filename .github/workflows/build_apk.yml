@@ -44,9 +44,7 @@ jobs:
             libtinfo5 \
             cmake \
             zip \
-            unzip \
-            libgstreamer1.0-dev \
-            gstreamer1.0-plugins-base
+            unzip
 
       - name: Install Python dependencies & Buildozer
         run: |
