@@ -1,0 +1,33 @@
+# Buildozer build artifacts
+.buildozer/
+bin/
+build/
+
+# Proyecto Android de prueba (NO es AkiMusic - mostraba "Hello Android")
+android_app/
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Virtual environments
+venv/
+.venv/
+
+# IDE configs
+.idea/
+.vscode/
+*.swp
+
+# Music library cache (local data)
+Music/
+.akimusic_cache.json
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log

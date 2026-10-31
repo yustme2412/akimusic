@@ -1,0 +1,6 @@
+kivy>=2.3.0
+mutagen>=1.47.0
+requests>=2.31.0
+yt-dlp>=2024.1.0
+Pillow>=10.0.0
+pygame>=2.5.0
