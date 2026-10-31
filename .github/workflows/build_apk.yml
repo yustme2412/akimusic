@@ -15,11 +15,6 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Set up Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: '3.11'
-
       - name: Set up Java 17
         uses: actions/setup-java@v4
         with:
@@ -44,22 +39,39 @@ jobs:
             libtinfo5 \
             cmake \
             zip \
-            unzip
+            unzip \
+            python3-pip \
+            python3-dev
 
-      - name: Install Python dependencies & Buildozer
+      - name: Install Buildozer and dependencies
         run: |
-          python -m pip install --upgrade pip
-          pip install "cython<3.0"
-          pip install buildozer
-          pip install "python-for-android==2024.1.21"
-          pip install -r requirements.txt
+          pip3 install --upgrade pip
+          # Versiones exactas probadas y compatibles con Kivy en Android
+          pip3 install "cython==0.29.37"
+          pip3 install "buildozer==1.5.0"
+          pip3 install "python-for-android==2023.9.16"
+          pip3 install mutagen requests yt-dlp pillow
 
       - name: Build Android APK with Buildozer
         run: |
-          buildozer android debug
+          buildozer -v android debug 2>&1 | tee build_output.txt
+          # Mostrar las ultimas 200 lineas si falla
+          if [ $? -ne 0 ]; then
+            echo "=== ULTIMAS 200 LINEAS DEL LOG ==="
+            tail -200 build_output.txt
+            exit 1
+          fi
 
       - name: Upload APK artifact
         uses: actions/upload-artifact@v4
         with:
           name: AkiMusic-APK
           path: bin/*.apk
+          if-no-files-found: warn
+
+      - name: Upload build log on failure
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: build-log
+          path: build_output.txt
