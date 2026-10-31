@@ -12,7 +12,7 @@ source.include_exts = py,png,jpg,kv,atlas,json
 source.main = main.py
 
 # ─── Dependencias Python ─────────────────────────────────
-requirements = python3,kivy==2.3.0,pillow,mutagen,requests,certifi,charset-normalizer,urllib3,yt-dlp
+requirements = python3,kivy==2.2.1,pillow,mutagen,requests,certifi,charset-normalizer,urllib3,yt-dlp
 
 # ─── Permisos Android ────────────────────────────────────
 android.permissions = INTERNET,WRITE_EXTERNAL_STORAGE,READ_EXTERNAL_STORAGE,READ_MEDIA_AUDIO,READ_MEDIA_IMAGES
@@ -21,7 +21,7 @@ android.request_legacy_external_storage = True
 # ─── Android SDK ─────────────────────────────────────────
 android.api = 33
 android.minapi = 24
-android.ndk = 23b
+android.ndk = 25b
 android.sdk = 33
 android.accept_sdk_license = True
 android.archs = arm64-v8a, armeabi-v7a
