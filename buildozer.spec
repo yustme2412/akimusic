@@ -9,6 +9,7 @@ version = 1.0.0
 # ─── Código fuente ───────────────────────────────────────
 source.dir = .
 source.include_exts = py,png,jpg,kv,atlas,json
+source.include_patterns = assets/*
 source.main = main.py
 
 # ─── Dependencias Python ─────────────────────────────────
@@ -31,7 +32,7 @@ orientation = portrait
 fullscreen = 0
 
 # ─── Icono y splash ──────────────────────────────────────
-# icon.filename = %(source.dir)s/assets/icon.png
+icon.filename = %(source.dir)s/assets/icon.png
 # presplash.filename = %(source.dir)s/assets/splash.png
 
 # ─── Android extras ──────────────────────────────────────

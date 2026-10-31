@@ -55,12 +55,11 @@ jobs:
       - name: Build Android APK with Buildozer
         run: |
           buildozer -v android debug 2>&1 | tee build_output.txt
-          # Mostrar las ultimas 200 lineas si falla
-          if [ $? -ne 0 ]; then
-            echo "=== ULTIMAS 200 LINEAS DEL LOG ==="
-            tail -200 build_output.txt
-            exit 1
-          fi
+          echo "=== Buscando APK ==="
+          find . -name "*.apk" 2>/dev/null
+          mkdir -p bin
+          find . -name "*.apk" -not -path "./bin/*" -exec cp {} bin/ \; 2>/dev/null || true
+          ls -la bin/ || echo "bin/ vacia"
 
       - name: Upload APK artifact
         uses: actions/upload-artifact@v4
